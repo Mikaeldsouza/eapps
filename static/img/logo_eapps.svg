@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="900"
+   height="371.00601"
+   viewBox="0 0 238.12501 98.162002"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0 (1.0+r73+1)"
+   sodipodi:docname="logo_eapps.svg">
+  <defs
+     id="defs2">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="87.727781 : 16.336222 : 1"
+       inkscape:vp_y="0 : 451.10274 : 0"
+       inkscape:vp_z="180.678 : 16.336232 : 1"
+       inkscape:persp3d-origin="134.20289 : -5.993358 : 1"
+       id="perspective12" />
+  </defs>
+  <sodipodi:namedview
+     showguides="false"
+     inkscape:pagecheckerboard="true"
+     units="px"
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="896.89856"
+     inkscape:cy="350.16045"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1440"
+     inkscape:window-height="843"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g13305"
+       transform="matrix(9.255506,0,0,9.254445,-580.60969,-691.72621)"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="61.704693"
+         y="83.606056"
+         id="text13249"><tspan
+           sodipodi:role="line"
+           id="tspan13247"
+           x="61.704693"
+           y="83.606056"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono Bold';fill:#ffffff;stroke-width:0.264583"><tspan
+             style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Medium Italic';fill:#ffffff;stroke-width:0.264583"
+             id="tspan13263">e</tspan><tspan
+             style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono Bold Italic';fill:#ffffff;stroke-width:0.264583"
+             id="tspan13261">apps</tspan></tspan></text>
+      <text
+         id="text13293"
+         y="77.884857"
+         x="79.841606"
+         style="font-style:normal;font-weight:normal;font-size:4.04583px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.101146"
+         xml:space="preserve"><tspan
+           style="font-style:italic;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Light Italic';fill:#f9f9f9;stroke-width:0.101146"
+           y="77.884857"
+           x="79.841606"
+           id="tspan13291"
+           sodipodi:role="line">.tech</tspan></text>
+    </g>
+  </g>
+</svg>
