@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cifra de César - Criptografar e Decriptografar</title>
+<script type="text/javascript" src="brython/brython.js"></script>
+<script type="text/javascript" src="brython/brython_stdlib.js"></script>
+<link rel="stylesheet" href="css/style2.css" type="text/css" media="screen and (min-width: 320px)">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen and (min-width: 1024px)">
+
+
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+</head>
+<body onload="brython(1)">
+<script type="text/python">
+  from browser import document,alert
+  from cifra import crypt
+  text_area = document["text"]
+  key_area = document["key"]
+  criptografar_button = document["crypt"]
+  decriptografar_button = document["decrypt"]
+
+  def criptografar(ev):
+    global text_area,key_area
+    if not (0 < int(key_area.value) <=25):
+      alert("A chave deve ser menor que 26 e maior que 0.")
+      return ""
+    try:
+      text_area.value = crypt(text_area.value,26-int(key_area.value))
+    except ValueError:
+      alert("A chave deve ser menor que 26 e maior que 0.")
+  criptografar_button.bind("click",criptografar)
+
+  def decriptografar(ev):
+    global text_area,key_area
+    if not (0 < int(key_area.value) <=25):
+      alert("A chave deve ser menor que 26 e maior que 0.")
+      return ""
+    try:
+      text_area.value = crypt(text_area.value,int(key_area.value))
+    except ValueError:
+      alert("A chave deve ser menor que 26 e maior que 0.")
+  decriptografar_button.bind("click",decriptografar)
+</script>
+
+<header>
+    <h1>Cifra de César</h1>
+</header>
+<main>
+  <input class ="inputs" type="number" id="key" placeholder="Digite a Chave da Cifra">
+  <textarea  class ="inputs" id="text" placeholder="Digite o texto a ser criptografado ou traduzido."></textarea>
+  <button class ="inputs" type="button" id="crypt">Criptografar</button>
+  <button class ="inputs" type="button" id="decrypt">Decriptografar (Traduzir)</button>
+</main>
+<footer>
+<span>Feito por <a href="http://eapps.tech" title="Eapps.tech">Eapps.tech</a> com <a href="http://www.brython.info">Brython</a>.</span>
+</footer>
+</body>
+
+</html>
