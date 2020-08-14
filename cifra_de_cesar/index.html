@@ -2,16 +2,12 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Cifra de César - Criptografar e Decriptografar</title>
-<script type="text/javascript" src="brython/brython.js"></script>
-<script type="text/javascript" src="brython/brython_stdlib.js"></script>
-<link rel="stylesheet" href="css/style2.css" type="text/css" media="screen and (min-width: 320px)">
-<link rel="stylesheet" href="css/style.css" type="text/css" media="screen and (min-width: 1024px)">
-
-
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<title>Cifra de César - Criptografar e Traduzir</title>
+<meta name=”description” content="Cifra de César, Criptografar e Traduzir. Cifra de César Online."/>
 </head>
 <body onload="brython(1)">
+<div id="code">
+</div>
 <script type="text/python">
   from browser import document,alert
   from cifra import crypt
@@ -44,17 +40,47 @@
 </script>
 
 <header>
-    <h1>Cifra de César</h1>
+    <span title="Cifra de César">Cifra de César - Criptografar e Traduzir</span>
 </header>
 <main>
   <input class ="inputs" type="number" id="key" placeholder="Digite a Chave da Cifra">
   <textarea  class ="inputs" id="text" placeholder="Digite o texto a ser criptografado ou traduzido."></textarea>
   <button class ="inputs" type="button" id="crypt">Criptografar</button>
   <button class ="inputs" type="button" id="decrypt">Decriptografar (Traduzir)</button>
+    <div class="content">
+       <h1>O que é a Cifra de César e Como Utiliza-la</h1>
+        <p>
+A cifra de césar é uma técnica de criptografia monoalfabética, uma das mais simples e mais conhecidas. Foi desenvolvida com o intuito de possibilitar a comunicação segura entre dois indivíduos. 
+
+Segundo a história, Júlio César utilizava um código nas mensagens enviadas a seus generais, era um sistema simples de substituição, em que cada letra da mensagem era trocada pela letra três posições a frente. Ficando dessa forma:
+<br><br>
+A ---> D<br>
+B ---> E<br>
+C ---> F<br> 
+<br>
+e assim sucessivamente...<br><br>
+
+<figure>
+<img class="cifra_de_cesar_img" src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Caesar3.svg" title="Cifra de César - Substituição" alt="Imagem exemplificando a troca das letras da cifra monoalfabética de césar."></img>
+</figure>
+
+Note que como todas as cifras de substituição monoalfabéticas, a Cifra de César, é na prática muito fácil de se decifrar e não oferece nenhuma segurança. No entanto ela é ainda muito utilizada na criptografia moderna como sendo parte de outras criptografias mais complexas como a <b>Cifra de Vigenère</b>.
+    </p>
+    </div>
 </main>
 <footer>
 <span>Feito por <a href="http://eapps.tech" title="Eapps.tech">Eapps.tech</a> com <a href="http://www.brython.info">Brython</a>.</span>
 </footer>
+
+<script type="text/javascript" src="brython/brython.js"></script>
+<script type="text/javascript" src="brython/brython_stdlib.js"></script>
+<script type="text/python" src="../barra.py"></script>
+<link rel="stylesheet" href="css/style2.css" type="text/css" media="screen and (min-width: 320px)">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen and (min-width: 1024px)">
+
+
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+
 </body>
 
 </html>

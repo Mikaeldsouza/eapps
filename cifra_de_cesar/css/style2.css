@@ -56,3 +56,32 @@ footer{
 footer a{
   color: white;
 }
+
+.content{
+        width:100%;
+        position: absolute;
+        left:0;
+        top:100%;
+        margin-top:200px;
+        color:rgb(255,255,255);
+        padding:25px;
+        box-sizing: border-box;
+        text-align: left;
+        font-size:50px;
+}
+
+.content h1{
+        margin-top:10px;
+        margin-bottom:10px;
+        font-size:70px;
+}
+
+.cifra_de_cesar_img{
+       width:100%;
+       margin-top:25px;
+        margin-bottom: 25px;
+    border-radius:10px;
+    border: 3px solid rgb(50,50,50);
+    display: inline;
+}
+
