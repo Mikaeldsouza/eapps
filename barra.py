@@ -2,7 +2,7 @@ from browser import document
 
 code = document["code"]
 
-code.html = """<div class='bar'><a href='https://eapps.tech/ferramentas/'>Precisa mais alguma ferramenta maravilhosa como esta? Clique Aqui!</a></div>
+code.html = """<div class='bar'><a href='https://eapps.tech/'>Precisa mais alguma ferramenta maravilhosa como esta? Clique Aqui!</a></div>
 
 
 <style type='text/css'>
