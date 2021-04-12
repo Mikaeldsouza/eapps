@@ -16,8 +16,23 @@
   criptografar_button = document["crypt"]
   decriptografar_button = document["decrypt"]
 
+  def verifica_numero(ev):
+    numeros = [0,1,2,3,4,5,6,7,8,9]
+    digitado = chr(ev.charCode)
+    try:
+      if int(digitado) in numeros:
+        return
+      else:
+        ev.preventDefault()
+    except:
+      ev.preventDefault()
+  key_area.bind("keypress",verifica_numero)
+
   def criptografar(ev):
     global text_area,key_area
+    if key_area.value == "":
+      alert("A Chave Deve Ser Um Número Maior Que 0 e Menor Que 26.")
+      return
     if not (0 < int(key_area.value) <=25):
       alert("A chave deve ser menor que 26 e maior que 0.")
       return ""
@@ -28,6 +43,9 @@
   criptografar_button.bind("click",criptografar)
 
   def decriptografar(ev):
+    if key_area.value == "":
+      alert("A Chave Deve Ser Um Número Maior Que 0 e Menor Que 26.")
+      return
     global text_area,key_area
     if not (0 < int(key_area.value) <=25):
       alert("A chave deve ser menor que 26 e maior que 0.")
@@ -47,17 +65,16 @@
   <textarea  class ="inputs" id="text" placeholder="Digite o texto a ser criptografado ou traduzido."></textarea>
   <button class ="inputs" type="button" id="crypt">Criptografar</button>
   <button class ="inputs" type="button" id="decrypt">Decriptografar (Traduzir)</button>
-  <span class="donate">Nos Ajude a Manter o Site Online e Sem Anúncios, Faça uma Doação de Qualquer Quantia. <a href="donate.html" class="link_donate">CLICK AQUI</a> e Saiba Mais! Obrigado :)</span>
     <div class="content">
        <h1>O que é a Cifra de César e Como Utiliza-la</h1>
         <p>
-A cifra de césar é uma técnica de criptografia monoalfabética, uma das mais simples e mais conhecidas. Foi desenvolvida com o intuito de possibilitar a comunicação segura entre dois indivíduos. 
+A cifra de césar é uma técnica de criptografia monoalfabética, uma das mais simples e mais conhecidas. Foi desenvolvida com o intuito de possibilitar a comunicação segura entre dois indivíduos.
 
 Segundo a história, Júlio César utilizava um código nas mensagens enviadas a seus generais, era um sistema simples de substituição, em que cada letra da mensagem era trocada pela letra três posições a frente. Ficando dessa forma:
 <br><br>
 A ---> D<br>
 B ---> E<br>
-C ---> F<br> 
+C ---> F<br>
 <br>
 e assim sucessivamente...<br><br>
 
