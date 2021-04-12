@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>BNB Hoje - Converta Binance Coin Para Real</title>
+<title>Cifra de César - Criptografar e Traduzir</title>
 <meta name=”description” content="Cifra de César, Criptografar e Traduzir. Cifra de César Online."/>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4X0PHFS3VW"></script>
@@ -18,70 +18,62 @@
 <div id="code">
 </div>
 <script type="text/python">
-  from browser import document, alert, ajax
+  from browser import document,alert
+  from cifra import crypt
+  text_area = document["text"]
+  key_area = document["key"]
+  criptografar_button = document["crypt"]
+  decriptografar_button = document["decrypt"]
 
-  VALOR = 0
-  bnb = document["bnb"]
-  bnb.value = 1
-  brl = document["brl"]
-
-  url = "https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=brl"
-
-  def requisicao_completa(req):
-    global VALOR
-    if req.status == 200 or req.status == 0:
-      response = req.text
-      response = response[22:].replace("}}","")
-      response = float(response)
-      VALOR = response
-    else:
-      alert("ERRO.")
-
-  req = ajax.Ajax()
-  req.bind("complete", requisicao_completa)
-  req.open("GET",url, False)
-  req.set_header('content-type', 'application/x-www-form-urlencoded')
-  req.send()
-
-  def alterar_brl(ev):
+  def verifica_numero(ev):
+    numeros = [0,1,2,3,4,5,6,7,8,9]
+    digitado = chr(ev.charCode)
     try:
-      bnb_valor = float(bnb.value)
-      valor_final = round(bnb_valor*VALOR,4)
-      brl.value = f"{valor_final}"
+      if int(digitado) in numeros:
+        return
+      else:
+        ev.preventDefault()
     except:
-      brl.value = "0"
+      ev.preventDefault()
+  key_area.bind("keypress",verifica_numero)
 
-  def alterar_bnb(ev):
+  def criptografar(ev):
+    global text_area,key_area
+    if key_area.value == "":
+      alert("A Chave Deve Ser Um Número Maior Que 0 e Menor Que 26.")
+      return
+    if not (0 < int(key_area.value) <=25):
+      alert("A chave deve ser menor que 26 e maior que 0.")
+      return ""
     try:
-      brl_valor = float(brl.value)
-      valor_final = round(brl_valor/VALOR,4)
-      bnb.value = f"{valor_final}"
-    except:
-      bnb.value = "0"
+      text_area.value = crypt(text_area.value,26-int(key_area.value))
+    except ValueError:
+      alert("A chave deve ser menor que 26 e maior que 0.")
+  criptografar_button.bind("click",criptografar)
 
-  def zerar(ev):
-    if bnb.value == "" or brl.value == "":
-      bnb.value = 1
-      alterar_brl(0)
-
-
-  bnb.bind("input", alterar_brl)
-  brl.bind("input", alterar_bnb)
-  bnb.bind("blur",zerar)
-  brl.bind("blur",zerar)
-
-  alterar_brl(0)
+  def decriptografar(ev):
+    if key_area.value == "":
+      alert("A Chave Deve Ser Um Número Maior Que 0 e Menor Que 26.")
+      return
+    global text_area,key_area
+    if not (0 < int(key_area.value) <=25):
+      alert("A chave deve ser menor que 26 e maior que 0.")
+      return ""
+    try:
+      text_area.value = crypt(text_area.value,int(key_area.value))
+    except ValueError:
+      alert("A chave deve ser menor que 26 e maior que 0.")
+  decriptografar_button.bind("click",decriptografar)
 </script>
 
 <header>
-    <span title="BNB Hoje - Converta Binance Coin Para Real">BNB Valor - Converta Binance Coin Para Real</span>
+    <span title="Cifra de César">Cifra de César - Criptografar e Traduzir</span>
 </header>
 <main>
-    <figure>
-      <img src="./img/converter_bnb_em_real.png" title="BNB - BINANCE COIN" class="logo_bnb">
-    </figure>
-    <input type="number" min="0" name="bnb" class="inputs"  id = "bnb"/><span class="sigla">BNB</span>
-    <input type="number" min="0" name="real" class="inputs"  id = "brl"/><span class="sigla">BRL</span>
+  <input class ="inputs" type="number" id="key" placeholder="Digite a Chave da Cifra">
+  <textarea  class ="inputs" id="text" placeholder="Digite o texto a ser criptografado ou traduzido."></textarea>
+  <button class ="inputs" type="button" id="crypt">Criptografar</button>
+  <button class ="inputs" type="button" id="decrypt">Decriptografar (Traduzir)</button>
     <div class="content">
        <h1>O que é a Cifra de César e Como Utiliza-la</h1>
         <p>
