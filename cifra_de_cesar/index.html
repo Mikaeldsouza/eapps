@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cifra de César - Criptografar e Traduzir</title>
+<meta name=”description” content="Cifra de César, Criptografar e Traduzir. Cifra de César Online."/>
+</head>
+<body>
+<header>
+    <span title="Cifra de César">Cifra de César - Criptografar e Traduzir</span>
+</header>
+<main>
+  <input class ="inputs" type="text" id="key" placeholder="Digite a Chave da Cifra">
+  <textarea  class ="inputs" id="text" placeholder="Digite o texto a ser criptografado ou traduzido."></textarea>
+  <div style="width:100%; text-align:center;">
+  <button class ="inputs button" type="button" id="copy" style="width:49%; display:inline;">Copiar</button>
+  <button class ="inputs button" type="button" id="clear"  style="width:49%; display:inline;">Limpar</button>
+  </div>
+  <button class ="inputs button" type="button" id="crypt">Criptografar</button>
+  <button class ="inputs button" type="button" id="decrypt">Decriptografar (Traduzir)</button>
+    <div class="content">
+       <h1>O que é a Cifra de César e Como Utiliza-la</h1>
+        <p>
+A cifra de césar é uma técnica de criptografia monoalfabética, uma das mais simples e mais conhecidas. Foi desenvolvida com o intuito de possibilitar a comunicação segura entre dois indivíduos.
+
+Segundo a história, Júlio César utilizava um código nas mensagens enviadas a seus generais, era um sistema simples de substituição, em que cada letra da mensagem era trocada pela letra três posições a frente. Ficando dessa forma:
+<br><br>
+A ---> D<br>
+B ---> E<br>
+C ---> F<br>
+<br>
+e assim sucessivamente...<br><br>
+
+
+
+<figure>
+<img class="cifra_de_cesar_img" src="./cifra_de_cesar_caesar_cipher-ROT13.jpg" title="Cifra de César - Substituição" alt="Imagem exemplificando a troca das letras da cifra monoalfabética de césar."></img>
+</figure>
+
+Há alguns anos a Cifra de César se popularizou nos forúns da internet com o objetivo de esconder informações a primeira vista de usuários, onde também ficou conhecida como ROT13, bastando apenas usar a chave 13 para a criptografia ou tradução.<br><br>
+
+Note que como todas as cifras de substituição monoalfabéticas, a Cifra de César, é na prática muito fácil de se decifrar e não oferece nenhuma segurança. No entanto ela é ainda muito utilizada na criptografia moderna como sendo parte de outras criptografias mais complexas como a <b>Cifra de Vigenère</b>.
+    </p>
+    </div>
+</main>
+<footer>
+<span>Feito por <a href="http://eapps.tech" title="Eapps.tech">Eapps.tech</a>.</span>
+</footer>
+
+<link rel="stylesheet" href="css/style2.css" type="text/css" media="screen and (min-width: 320px)">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen and (min-width: 1024px)">
+
+<script type="text/javascript">
+
+
+  let abc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+  //Instâncias de Objetos
+
+    var key_input = document.getElementById("key"); //Chave
+    var text_input = document.getElementById("text"); //Texto
+    var btn_clear = document.getElementById("clear"); //Limpar
+    var btn_copiar = document.getElementById("copy"); //Copiar
+    var btn_crypt = document.getElementById("crypt"); //Criptografar
+    var btn_decrypt = document.getElementById("decrypt"); //Traduzir
+
+  //Eventos
+
+    //Chave da Cifra
+
+    key_input.addEventListener("keypress",handle_key);
+    key_input.addEventListener("focusout",handle_key_focus);
+
+    //Limpar
+
+    btn_clear.addEventListener("click", handle_clear);
+
+    //Copiar
+
+    btn_copiar.addEventListener("click", handle_copiar);
+
+    //Criptografar
+    btn_crypt.addEventListener("click",handle_crypt)
+
+    //Traduzir
+    btn_decrypt.addEventListener("click",handle_decrypt)
+
+
+
+  //Funções dos Eventos
+
+    //Handle Evento Key
+    function handle_key(event){
+      if (isNaN(parseInt(event.key))){
+        event.preventDefault()
+      }
+    }
+
+    function handle_key_focus(event){
+      let event_target = event.target.value;
+      if (parseInt(event_target) === 0 || event_target === ""){
+        event.target.value = 1;
+      }
+
+      if (event_target >= 26){
+        event.target.value = 25;
+      }
+
+
+    }
+
+    //Handle Evento Clear
+    function handle_clear(event){
+      key_input.value = "";
+      text_input.value = "";
+    }
+
+    //Handle Evento Copiar
+    function handle_copiar(event){
+      navigator.clipboard.writeText(text_input.value);
+    }
+
+    function handle_crypt(event){
+      if (key_input.value === ""){
+        alert("Preencha a Chave da Cifra.");
+        return false;
+      }
+      if (text_input.value === ""){
+        alert("Digite o Texto a Ser Cifrado.");
+        return false;
+      }
+      text_input.value = crypt_translate(text_input.value.toLowerCase(), parseInt(key_input.value), true);
+      return true;
+    }
+
+    function handle_decrypt(event){
+      if (key_input.value === ""){
+        alert("Preencha a Chave da Cifra.");
+        return false;
+      }
+      if (text_input.value === ""){
+        alert("Digite o Texto a Ser Traduzido.");
+        return false;
+      }
+      text_input.value = crypt_translate(text_input.value.toLowerCase(), parseInt(key_input.value), false);
+      return true;
+    }
+
+
+    //Funções crypt e decrypt
+
+    function crypt_translate(entrada, chave, crypt = true){
+      const entrada_array = entrada.split("");
+      const saida = [];
+      let abc_m = abc.slice();
+
+      for(let i = 0; i < chave; i++){
+        abc_m.push(abc_m.shift());
+      }
+
+      const transform = function (letra){
+        if (crypt){
+        let position = abc.indexOf(letra);
+        saida.push(abc_m[position]);
+      }
+        else{
+          let position = abc_m.indexOf(letra);
+          saida.push(abc[position]);
+        }
+
+      };
+
+      entrada_array.forEach(transform);
+
+
+
+      return saida.join("");
+
+
+    }
+
+</script>
+
+</body>
+
+</html>
